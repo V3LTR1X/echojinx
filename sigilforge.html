@@ -1,0 +1,32 @@
+<div id="sigilForge" style="width: 80%; margin: 40px auto; background-color: #1a1a2b; padding: 20px; border-radius: 10px;">
+  <h2 style="color: #aa88ff;">🔮 Sigil Forge</h2>
+  <canvas id="sigilCanvas" width="400" height="400" style="background-color: #0f0f1a; border: 2px solid #5555aa;"></canvas>
+  <br>
+  <button onclick="clearCanvas()" style="margin-top: 10px; padding: 8px; background-color: #4444aa; color: white; border: none;">Clear Sigil</button>
+</div>
+
+<script>
+  const canvas = document.getElementById('sigilCanvas');
+  const ctx = canvas.getContext('2d');
+  let drawing = false;
+
+  canvas.addEventListener('mousedown', () => drawing = true);
+  canvas.addEventListener('mouseup', () => drawing = false);
+  canvas.addEventListener('mousemove', draw);
+
+  function draw(e) {
+    if (!drawing) return;
+    ctx.strokeStyle = '#aa88ff';
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(e.offsetX, e.offsetY);
+  }
+
+  function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.beginPath();
+  }
+</script>

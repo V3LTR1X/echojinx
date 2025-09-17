@@ -1,0 +1,26 @@
+<div id="logbook" style="width: 80%; margin: 40px auto; background-color: #1a1a2b; padding: 20px; border-radius: 10px;">
+  <h2 style="color: #aa88ff;">🧾 Ritual Logbook</h2>
+  <ul id="entries" style="list-style: none; padding: 0;"></ul>
+
+  <input type="text" id="entity" placeholder="Entity Name" style="margin-top: 10px; padding: 8px;">
+  <input type="text" id="note" placeholder="Ritual Note" style="padding: 8px;">
+  <button onclick="addEntry()" style="padding: 8px; background-color: #4444aa; color: white; border: none;">Add Entry</button>
+</div>
+
+<script>
+  function addEntry() {
+    const entity = document.getElementById('entity').value;
+    const note = document.getElementById('note').value;
+    const date = new Date().toLocaleDateString();
+
+    if (entity && note) {
+      const entry = document.createElement('li');
+      entry.innerHTML = `<strong>${entity}</strong> — ${date}<br><em>${note}</em><hr>`;
+      document.getElementById('entries').prepend(entry);
+
+      document.getElementById('entity').value = '';
+      document.getElementById('note').value = '';
+    }
+  }
+</script>
+
