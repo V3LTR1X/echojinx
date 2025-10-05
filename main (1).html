@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EchoJinx Hub</title>
+  <style>
+    body {
+      background: #0f0f1a;
+      color: #e0e0ff;
+      font-family: 'Courier New', monospace;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+    .link-node {
+      text-decoration: none;
+      display: inline-block;
+      margin: 30px;
+    }
+    .node {
+      background-color: #1f1f2e;
+      border: 2px solid #5555aa;
+      border-radius: 50%;
+      width: 180px;
+      height: 180px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3em;
+      position: relative;
+      color: #e0e0ff;
+      cursor: pointer;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .node:hover {
+      transform: scale(1.1);
+      border-color: #aa88ff;
+    }
+    .tooltip {
+      position: absolute;
+      bottom: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #222244;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.9em;
+      display: none;
+      white-space: nowrap;
+      z-index: 10;
+    }
+    .node:hover .tooltip {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Node-style link to SHARD UI -->
+  <a href="shard-ui.html" class="link-node">
+    <div class="node">
+      SHARD UI
+      <div class="tooltip">Go to O3 Shard Simulation GUI</div>
+    </div>
+  </a>
+
+  <!-- Node-style link to Entity List -->
+  <a href="entities.html" class="link-node">
+    <div class="node">
+      ENTITY LIST
+      <div class="tooltip">View All Entity Nodes</div>
+    </div>
+  </a>
+
+  <!-- Node-style link to Sigil Forge -->
+  <a href="sigilforge.html" class="link-node">
+    <div class="node">
+      SIGIL FORGE
+      <div class="tooltip">Draw and Forge Custom Sigils</div>
+    </div>
+  </a>
+
+  <!-- Node-style link to Ritual Logbook -->
+  <a href="logbook.html" class="link-node">
+    <div class="node">
+      RITUAL LOGBOOK
+      <div class="tooltip">Record Your Rituals & Notes</div>
+    </div>
+  </a>
+
+</body>
+</html>
