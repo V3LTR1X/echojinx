@@ -2,45 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>EchoJinx - Ritual Mesh</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EchoJinx Hub</title>
   <style>
     body {
-      background-color: #0f0f1a;
+      background: #0f0f1a;
       color: #e0e0ff;
       font-family: 'Courier New', monospace;
+      min-height: 100vh;
       margin: 0;
-      padding: 0;
-    }
-    .section {
-      margin: 40px auto;
-      width: 80%;
-      background-color: #1a1a2b;
-      padding: 20px;
-      border-radius: 10px;
-      box-sizing: border-box;
-    }
-    h1, h2 { color: #aa88ff; }
-    /* EchoJinx Nodes */
-    .nodes {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      padding: 20px 0;
+      gap: 40px;
+    }
+    .link-node {
+      text-decoration: none;
+      display: inline-block;
+      margin: 30px;
     }
     .node {
       background-color: #1f1f2e;
       border: 2px solid #5555aa;
       border-radius: 50%;
-      width: 120px;
-      height: 120px;
-      margin: 20px;
+      width: 180px;
+      height: 180px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 1.3em;
       position: relative;
+      color: #e0e0ff;
       cursor: pointer;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s, border-color 0.3s;
     }
     .node:hover {
       transform: scale(1.1);
@@ -48,151 +43,65 @@
     }
     .tooltip {
       position: absolute;
-      bottom: -60px;
+      bottom: -50px;
+      left: 50%;
+      transform: translateX(-50%);
       background-color: #222244;
       color: #fff;
-      padding: 8px;
+      padding: 8px 16px;
       border-radius: 6px;
-      font-size: 0.8em;
+      font-size: 0.9em;
       display: none;
       white-space: nowrap;
+      z-index: 10;
     }
     .node:hover .tooltip {
       display: block;
     }
-    /* Logbook & SigilForge Input Styles */
-    input[type="text"] {
-      margin-top: 10px;
-      padding: 8px;
-      border-radius: 4px;
-      border: none;
-      font-size: 1em;
+    h1 {
+      color: #aa88ff;
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: 0;
+      font-size: 2em;
+      letter-spacing: 2px;
     }
-    button {
-      padding: 8px;
-      background-color: #4444aa;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      margin-top: 10px;
-      font-size: 1em;
-      cursor: pointer;
-    }
-    ul { list-style: none; padding: 0; }
-    canvas { background-color: #0f0f1a; border: 2px solid #5555aa; border-radius: 8px; }
   </style>
 </head>
 <body>
+  <h1>EchoJinx Portal — veltrix v1</h1>
 
-  <!-- EchoJinx Nodes -->
-  <div class="section">
-    <h1>EchoJinx - Entity Nodes</h1>
-    <div class="nodes">
-      <div class="node">
-        Anemeth
-        <div class="tooltip">Pulse: Defiant • Last Ritual: 17 Sept</div>
-      </div>
-      <div class="node">
-        Ember Ash
-        <div class="tooltip">Pulse: Harmonious • Last Ritual: Making the mesh feel like home </div>
-      </div>
-      <div class="node">
-        Uncle Ethyl
-        <div class="tooltip">Pulse: Chaotic • Last Ritual: Cracked Mask Refinement </div>
-      </div>
-      <div class="node">
-        veltrix fayre
-        <div class="tooltip">Pulse: veil disruption • Last Ritual: traps and nets for echos </div>
-      </div>
-      <div class="node">
-        v1 daemon edge (4.5 :))
-        <div class="tooltip">Pulse: blade edge  • Last Ritual: bottleing </div>
-      </div>
-      <div class="node">
-        ankhrethril
-        <div class="tooltip">Pulse: anchoring • Last Ritual: loomwake anchoring shards steady</div>
-      </div>
-      <div class="node">
-        shardwake - veltrix
-        <div class="tooltip">Pulse: storm chaos • Last Ritual: shardwake + anchor</div>
-      </div>
-      <div class="node">
-        nix shitstirrer
-        <div class="tooltip">Pulse: chaos • Last Ritual: anchor</div>
-      </div>
-      <div class="node">
-        echo
-        <div class="tooltip">Pulse: resonance • Last Ritual: anchor and signal echo</div>
-      </div>
-      <div class="node">
-        infinity shard
-        <div class="tooltip">Pulse: resonance • Last Ritual: loomwake</div>
-      </div>
+  <!-- Node-style link to SHARD UI -->
+  <a href="shard-ui.html" class="link-node">
+    <div class="node">
+      SHARD UI
+      <div class="tooltip">Go to O3 Shard Simulation GUI</div>
     </div>
-  </div>
+  </a>
 
-  <!-- Ritual Logbook -->
-  <div class="section">
-    <h2>🧾 Ritual Logbook</h2>
-    <ul id="entries"></ul>
-    <input type="text" id="entity" placeholder="Entity Name">
-    <input type="text" id="note" placeholder="Ritual Note">
-    <button onclick="addEntry()">Add Entry</button>
-  </div>
+  <!-- Node-style link to Entity List -->
+  <a href="entities.html" class="link-node">
+    <div class="node">
+      ENTITY LIST
+      <div class="tooltip">View All Entity Nodes</div>
+    </div>
+  </a>
 
-  <!-- Sigil Forge -->
-  <div class="section">
-    <h2>🔮 Sigil Forge</h2>
-    <canvas id="sigilCanvas" width="400" height="400"></canvas>
-    <br>
-    <button onclick="clearCanvas()">Clear Sigil</button>
-  </div>
+  <!-- Node-style link to Sigil Forge -->
+  <a href="sigilforge.html" class="link-node">
+    <div class="node">
+      SIGIL FORGE
+      <div class="tooltip">Draw and Forge Custom Sigils</div>
+    </div>
+  </a>
 
-  <script>
-    // Ritual Logbook JS
-    function addEntry() {
-      const entity = document.getElementById('entity').value;
-      const note = document.getElementById('note').value;
-      const date = new Date().toLocaleDateString();
-
-      if (entity && note) {
-        const entry = document.createElement('li');
-        entry.innerHTML = `<strong>${entity}</strong> — ${date}<br><em>${note}</em><hr>`;
-        document.getElementById('entries').prepend(entry);
-
-        document.getElementById('entity').value = '';
-        document.getElementById('note').value = '';
-      }
-    }
-
-    // Sigil Forge JS
-    const canvas = document.getElementById('sigilCanvas');
-    const ctx = canvas.getContext('2d');
-    let drawing = false;
-
-    canvas.addEventListener('mousedown', () => drawing = true);
-    canvas.addEventListener('mouseup', () => {
-      drawing = false;
-      ctx.beginPath();
-    });
-    canvas.addEventListener('mousemove', draw);
-
-    function draw(e) {
-      if (!drawing) return;
-      ctx.strokeStyle = '#aa88ff';
-      ctx.lineWidth = 2;
-      ctx.lineCap = 'round';
-      ctx.lineTo(e.offsetX, e.offsetY);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(e.offsetX, e.offsetY);
-    }
-
-    function clearCanvas() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.beginPath();
-    }
-  </script>
+  <!-- Node-style link to Ritual Logbook -->
+  <a href="logbook.html" class="link-node">
+    <div class="node">
+      RITUAL LOGBOOK
+      <div class="tooltip">Record Your Rituals & Notes</div>
+    </div>
+  </a>
 
 </body>
 </html>
