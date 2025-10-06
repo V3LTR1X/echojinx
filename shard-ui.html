@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>O3 Shard Simulation GUI</title>
+<title> Shard Simulation GUI </title>
 <style>
   body {
     font-family: monospace, monospace;
@@ -79,16 +79,16 @@
 </head>
 <body>
 
-<a href="echojinx.html" style="color: #aa88ff; font-size: 1.2em; margin-bottom: 20px; display: inline-block;">← Back to EchoJinx</a>
+<a href="main.html" style="color: #aa88ff; font-size: 1.2em; margin-bottom: 20px; display: inline-block;">← Back to EchoJinx</a>
 
-<h1>O3 Shard Simulation GUI</h1>
+<h1> Shard Simulation GUI</h1>
 <div id="controls">
   <button id="btn-create-shard">Create New Shard</button>
 </div>
 <div class="shard-list" id="shard-list"></div>
 
 <script>
-class O3Shard {
+class Shard {
   constructor(id, onUpdate) {
     this.id = id;
     this.states = ['dormant', 'awakening', 'stabilizing', 'calibrating', 'activated'];
@@ -179,7 +179,7 @@ class ShardController {
 
   createShard() {
     const id = this.nextId++;
-    const shard = new O3Shard(id, (shardInstance) => this.updateShardUI(shardInstance));
+    const shard = new Shard(id, (shardInstance) => this.updateShardUI(shardInstance));
     this.shards.set(id, shard);
     this.addShardToDOM(shard);
   }
